@@ -1,5 +1,6 @@
 package com.zakharov.testtask.controller;
 
+import com.zakharov.testtask.dto.PersonDto;
 import com.zakharov.testtask.entity.Person;
 import com.zakharov.testtask.sevice.PersonService;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +14,13 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public Person getPersonById(@PathVariable int id){
+    public PersonDto getPersonById(@PathVariable int id) {
         return personService.getPersonById(id);
     }
 
-    @PostMapping()
-    public Person savePerson(@RequestBody Person person){
-        return personService.addPerson(person);
-    }
+//    @PostMapping("/save")
+//    public Person savePerson(@RequestBody Person person){
+//        return personService.save(person);
+//    }
+
 }

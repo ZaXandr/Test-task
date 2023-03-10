@@ -16,11 +16,4 @@ public class TestTaskApplication {
 		SpringApplication.run(TestTaskApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner runner(PersonRepository repository){
-		return args -> {
-			Person person = new Person("Alex","Zakharov", LocalDate.now());
-			repository.save(person);
-		};
-	}
 }

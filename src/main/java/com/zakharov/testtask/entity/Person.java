@@ -1,35 +1,51 @@
 package com.zakharov.testtask.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
+
+import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Person {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NonNull
     private String firstName;
-    private String secondName;
-    private LocalDate birthday;
 
-    public Person(){
+    @NonNull
+    private String lastName;
 
+    @NonNull
+    private LocalDate dayOfBirth;
+
+    public Person() {
     }
 
-    public Person(String firstName, String secondName, LocalDate birthday) {
+    public Person(String firstName, String lastName, LocalDate dayOfBirth) {
         this.firstName = firstName;
-        this.secondName = secondName;
-        this.birthday = birthday;
+        this.lastName = lastName;
+        this.dayOfBirth = dayOfBirth;
+    }
+
+    public Person(Integer id, @NonNull String firstName, @NonNull String lastName, @NonNull LocalDate dayOfBirth) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dayOfBirth = dayOfBirth;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -40,19 +56,20 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public LocalDate getDayOfBirth() {
+        return dayOfBirth;
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
+    public void setDayOfBirth(LocalDate dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
     }
+
 }
